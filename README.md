@@ -14,9 +14,9 @@ Program{
 
 }
 ```
-#### Flags
+### Flags
 Flags can be seperated by commas and will determine certain outputs
-| Flag          | Description |
-| ------------- | ------------- |
-| Content Cell  | Content Cell  |
-| Content Cell  | Content Cell  |
+| Flag          | Type          | Description                                                       |
+| ------------- | ------------- | ----------------------------------------------------------------- |
+| Timed         | End           | Will show how long the program took to run at the end             |
+| NoExitCode    | End           | Will prevent the program from displaying an exit code at the end  |
