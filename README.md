@@ -20,3 +20,9 @@ Flags can be seperated by commas and will determine certain outputs
 | ------------- | ------------- | ----------------------------------------------------------------- |
 | Timed         | End           | Will show how long the program took to run at the end             |
 | NoExitCode    | End           | Will prevent the program from displaying an exit code at the end  |
+
+### Opcodes
+
+| Opcode        | Syntax                              | Description                                                                                    |
+| ------------- | ----------------------------------- | ---------------------------------------------------------------------------------------------- |
+| ADD           | ADD <initial & result>, <secondary> | Adds the two numbers stored at the addresses and replaces the data in the first memory address |
