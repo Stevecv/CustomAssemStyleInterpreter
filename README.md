@@ -29,10 +29,8 @@ Flags can be seperated by commas and will determine certain outputs
 | MIN           | MIN <initial & result>, <secondary> | Subtracts the two numbers stored at the addresses and replaces the data in the first memory address  |
 | MUL           | MUL <initial & result>, <secondary> | Multiplies the two numbers stored at the addresses and replaces the data in the first memory address |
 | DIV           | DIV <initial & result>, <secondary> | Divides the two numbers stored at the addresses and replaces the data in the first memory address    |
-
 | JMP           | JMP <to>                            | Jumps to the instruction at the requested location                                                   |
 | IF            | IF <boolean address> <jumpto>       | Jumps to the instruction at the requested location if the data at the requested address is true      |
 | EQL           | EQL <data address> <data address>   | Checks if the data at both locations are the same                                                    |
 | NOT           | NOT <data address>                  | Will flip a boolean variable at the given location                                                   |
-
 | MOV           | MOV <data address> <to>             | Copies the data from the address requested to the address requested                                  |
