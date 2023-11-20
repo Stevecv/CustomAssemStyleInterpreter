@@ -1,11 +1,37 @@
 import re
+import time
+start_time = time.time()
+
+scriptName = input("Enter your compiled scripts name > ")
+f = open("F:\CustomAssemScripts\\" + scriptName + ".ss", "r")
+program = f.read().replace("\n", "")
 
 
-program = "Data{0,1,false,10,0}Program{ADD 0, 1;PRNT 0;MOV 0, 2;EQL 2, 3;NOT 2;IF 2, 4;END;}".replace("\n", "")
-
-
-dataSet = re.findall("Data{(.*?)}", program)[0].split(",")
+flags = re.findall("Flags{(.*?)}", program)[0].split(",")
 instructions = re.findall("Program{(.*?)}", program)[0].split(";")
+
+dataString = re.findall("Data{(.*?)}", program)[0]
+characters = list(dataString)
+dataSet = []
+builder = ""
+state = "normal"
+previousChar = ""
+for character in characters:
+    if (character == "\"" and previousChar != "\\"):
+        if (state == "string"):
+            state = "normal"
+        else:
+            state = "string"
+    if (character == ","):
+        if (state == "normal"):
+            dataSet.append(builder)
+            builder = ""
+    else:
+        builder += character
+
+    previousChar = character
+dataSet.append(builder)
+
 registers = []
 
 def getData(address):
@@ -41,7 +67,13 @@ pc = 0
 while pc < runLen:
     instruction = instructions[pc].strip()
     if (instruction == "END"):
-        print("Exit code 0")
+        print("\n")
+
+        if ("NoExitCode" not in flags):
+            print("Exit code 0")
+        if ("Timed" in flags):
+            print("Prorgam took %s seconds" % (time.time() - start_time))
+        
         break
 
 
