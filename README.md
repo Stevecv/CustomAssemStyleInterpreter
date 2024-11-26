@@ -36,7 +36,7 @@ Flags can be seperated by commas and will determine certain outputs
 | MOV           | MOV <data address> <to>             | Copies the data from the address requested to the address requested                                  |
 
 Loop that counts to 10:
-```
+```assembly
 Flags{
 
 }
