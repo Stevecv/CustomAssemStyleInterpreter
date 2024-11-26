@@ -2,9 +2,10 @@ import re
 import time
 start_time = time.time()
 
-scriptName = input("Enter your compiled scripts name > ")
-f = open("F:\CustomAssemScripts\\" + scriptName + ".ss", "r")
-program = f.read().replace("\n", "")
+scriptName = input("Enter your compiled scripts path and name > ")
+program = ""
+with open(scriptName + ".ss", "r") as f:
+    program = "".join(line.strip() for line in f)
 
 
 flags = re.findall("Flags{(.*?)}", program)[0].split(",")
@@ -35,11 +36,14 @@ dataSet.append(builder)
 registers = []
 
 def getData(address):
-    if (address.isnumeric()):
-        return dataSet[int(address)]
-    else:
-        print(address)
-        return registers[ord(address)]
+    try:
+        if (address.isnumeric()):
+            return dataSet[int(address)]
+        else:
+            print(address)
+            return registers[ord(address)]
+    except:
+        print("ERROR - " + str(address))
 
 
 def saveData(address, data):
@@ -77,7 +81,10 @@ while pc < runLen:
         break
 
 
-    cmd = re.findall("^(.*?) ", instruction)[0].upper()
+    try:
+        cmd = re.findall("^(.*?) ", instruction)[0].upper()
+    except IndexError:
+        print("ERROR - Instruction \"" + instruction + "\" not found")
     instruction_data = re.sub(re.compile("^" + cmd), "", instruction).split(",")
 
     for i in range(0, len(instruction_data)):
