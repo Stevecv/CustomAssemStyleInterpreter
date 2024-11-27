@@ -34,3 +34,29 @@ Flags can be seperated by commas and will determine certain outputs
 | EQL           | EQL <data address> <data address>   | Checks if the data at both locations are the same                                                    |
 | NOT           | NOT <data address>                  | Will flip a boolean variable at the given location                                                   |
 | MOV           | MOV <data address> <to>             | Copies the data from the address requested to the address requested                                  |
+
+Loop that counts to 10:
+```assembly
+Flags{
+
+}
+Data{
+	0,
+	10,
+	true,
+	1,
+	0,
+}
+Program{
+	PRNT 0;
+
+	MOV 0, 2;
+	EQL 2, 1;
+	NOT 2;
+
+	ADD 0, 3;
+	IF 2, 4;
+
+	END;
+}
+```
