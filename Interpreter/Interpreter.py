@@ -1,8 +1,8 @@
 import re
 import time
-start_time = time.time()
 
 scriptName = input("Enter your compiled scripts path and name > ")
+start_time = time.time()
 program = ""
 with open(scriptName + ".ss", "r") as f:
     program = "".join(line.strip() for line in f)
